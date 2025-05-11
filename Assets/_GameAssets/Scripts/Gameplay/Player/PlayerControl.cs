@@ -40,6 +40,7 @@ public class PlayerControl : MonoBehaviour
     {
         SetInputs();
         SetPlayerDrag();
+        LimitPlayerSpeed();
     }
 
     private void FixedUpdate()
@@ -100,6 +101,13 @@ public class PlayerControl : MonoBehaviour
     private void LimitPlayerSpeed()
     {
         Vector3 flatvelocity = new Vector3(PlayerRb.linearVelocity.x, 0f, PlayerRb.linearVelocity.z);
+
+        if (flatvelocity.magnitude > MovementSpeed)
+        {
+            Vector3 limitedVelocity = flatvelocity.normalized * MovementSpeed;
+            PlayerRb.linearVelocity = new Vector3(limitedVelocity.x, PlayerRb.linearVelocity.y, limitedVelocity.z);
+
+        }
     }
 
     private void PlayerJump()
