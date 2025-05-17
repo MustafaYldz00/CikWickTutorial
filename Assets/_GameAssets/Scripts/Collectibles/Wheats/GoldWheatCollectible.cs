@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class GoldWheatCollectible : MonoBehaviour, ICollectible
 {
+    [SerializeField] private WheatDesingSO _wheatDesingSO;
     [SerializeField] private PlayerControl _playerControl;
-    [SerializeField] private float _momementIncreaseSpeed;
-    [SerializeField] private float _resetBoostDuration;
+    
 
     public void Collect()
     {
-        _playerControl.SetMovementSpeed(_momementIncreaseSpeed, _resetBoostDuration);
+        _playerControl.SetMovementSpeed(_wheatDesingSO.IncreaseDecreaseMultiplier, _wheatDesingSO.ReputationMultiplier);
         Destroy(gameObject);
     }
 }
