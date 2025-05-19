@@ -1719,6 +1719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 601921813}
+  - component: {fileID: 601921814}
   m_Layer: 0
   m_Name: HealtManager
   m_TagString: Untagged
@@ -1741,6 +1742,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &601921814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601921812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5fded6d8eded7499cd357905bf215d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealt: 3
 --- !u!1 &640336648
 GameObject:
   m_ObjectHideFlags: 0
@@ -3809,6 +3823,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1827782894}
+  - component: {fileID: 1827782895}
   m_Layer: 5
   m_Name: "T\u0131merUI"
   m_TagString: Untagged
@@ -3837,6 +3852,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1827782895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827782893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6169d490661cf14e892fd7b2ed2f7ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timerRotatiableTransform: {fileID: 1114566582}
+  _timerText: {fileID: 1171741348}
+  _rotationDuration: 60
+  _rotationEase: 1
 --- !u!1 &1973311671
 GameObject:
   m_ObjectHideFlags: 0
@@ -3921,6 +3952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1985486273}
+  - component: {fileID: 1985486274}
   m_Layer: 5
   m_Name: PlayerHealtUI
   m_TagString: Untagged
@@ -3950,6 +3982,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1985486274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985486272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b2252ef32615246ab938e9af1c2584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerHealtImages:
+  - {fileID: 148985152}
+  - {fileID: 488794881}
+  - {fileID: 319587741}
+  _playerHealthySprite: {fileID: 21300000, guid: f52db0cc606b0d648b3868f7865417c6, type: 3}
+  _playerUnhealthySprite: {fileID: 21300000, guid: 132037a797cdc04469a6e251ee7e2172, type: 3}
+  _scaleDuration: 0.3
 --- !u!1 &2015618473
 GameObject:
   m_ObjectHideFlags: 0
