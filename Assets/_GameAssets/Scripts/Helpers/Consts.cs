@@ -18,6 +18,15 @@ public class Consts
         public const string IS_SLIDING = "IsSliding";
         public const string IS_SLIDING_ACTIVE = "IsSlidingActive";
     }
+
+    public struct CatAnimation
+    {
+        public const string IS_IDLING = "IsIdling";
+        public const string IS_WALKING = "IsWalking";
+        public const string IS_RUNNING = "IsRunning";
+        public const string IS_ATTACKING = "IsAttacking";
+    }
+
     public struct WheatTypes
     {
         public const string GOLD_WHEAT = "GoldWheat";

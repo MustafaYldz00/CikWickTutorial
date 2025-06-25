@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class CatController : MonoBehaviour
 {
+    public event Action OnCatCatched;
+
     [Header("References")]
     [SerializeField] private PlayerControl _playerControl;
     [SerializeField] private Transform _PlayerTransform;
@@ -51,7 +54,8 @@ public class CatController : MonoBehaviour
 
     private void SetChaseMovement()
     {
-        Vector3 directionPlayer = (_PlayerTransform.position-transform.position).normalized;
+        _isChasing = true;
+        Vector3 directionPlayer = (_PlayerTransform.position - transform.position).normalized;
         Vector3 offSetPosition = _PlayerTransform.position - directionPlayer * _changeDistanceTreshold;
         _catAgent.SetDestination(offSetPosition);
         _catAgent.speed = _chaseSpeed;
@@ -59,6 +63,7 @@ public class CatController : MonoBehaviour
 
         if (Vector3.Distance(transform.position, _PlayerTransform.position) <= _changeDistance && _isChasing)
         {
+            OnCatCatched?.Invoke();
             _catStateConroller.ChangeState(CatState.Atacking);
             _isChasing = false;
         }
