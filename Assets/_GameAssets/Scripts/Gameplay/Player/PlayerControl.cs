@@ -5,7 +5,7 @@ public class PlayerControl : MonoBehaviour
 {
     public event Action OnPlayerJumped;
     public event Action<PlayerState> OnPlayerStateChanged;
-    
+
     [Header("References")]
     [SerializeField] private Transform Orientation;
 
@@ -81,15 +81,15 @@ public class PlayerControl : MonoBehaviour
         {
             isSliding = true;
         }
-        else if (Input.GetKeyDown(movementKey)) 
+        else if (Input.GetKeyDown(movementKey))
         {
-           isSliding= false;
+            isSliding = false;
         }
         else if (Input.GetKey(jumpKey) && canJump && IsGrounded())
         {
             canJump = false;
             PlayerJump();
-            Invoke(nameof(canJumpReset),jumpCoolDown);
+            Invoke(nameof(canJumpReset), jumpCoolDown);
         }
     }
 
@@ -119,7 +119,7 @@ public class PlayerControl : MonoBehaviour
 
     private void PlayerMovement()
     {
-        _MovementDirection = Orientation.forward * verticalInput+ Orientation.right* horizontalInput;
+        _MovementDirection = Orientation.forward * verticalInput + Orientation.right * horizontalInput;
 
         float forcemultiplayer = _stateController.GetCurrentState() switch
         {
@@ -204,6 +204,23 @@ public class PlayerControl : MonoBehaviour
     public Rigidbody GetPlayerRigidbody()
     {
         return PlayerRb;
+    }
+
+    public bool CanCatChase()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit,
+            playerheight * 0.5f + 0.2f, groundLayer))
+        {
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer(Consts.Layers.FLOOR_LAYER))
+            {
+                return true;
+            }
+            else if (hit.collider.gameObject.layer == LayerMask.NameToLayer(Consts.Layers.FLOOR_LAYER))
+            {
+                return false;
+            }
+        }
+        return false;
     }
     #endregion
 }

@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "CikWickTutorial.sln"
+    "dotnet.defaultSolution": "CikWickTutorial.sln",
+    "dotnet.preferCSharpExtension": true
 }
