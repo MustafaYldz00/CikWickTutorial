@@ -35,6 +35,7 @@ public class PlayerIntrectionController : MonoBehaviour
         if (other.TryGetComponent<IDamageables>(out var damageables))
         {
             damageables.GiveDamage(_playerRigidbody, _playerVisualTransform);
+            CameraShake.Instance.ShakeCamera(1f, 0.5f);
         }
     }
 }
