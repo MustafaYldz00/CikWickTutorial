@@ -20,9 +20,6 @@ public class TımerUI : MonoBehaviour
 
     private void Start()
     {
-        PlayRotationAnimation();
-        StartTimer();
-
         GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
     }
 
@@ -30,6 +27,10 @@ public class TımerUI : MonoBehaviour
     {
         switch (gameState)
         {
+            case GameState.Play:
+                PlayRotationAnimation();
+                StartTimer();
+                break;
             case GameState.Pause:
                 StopTimer();
                 break;
