@@ -20,7 +20,8 @@ public class SpatulaBooster : MonoBehaviour, IBoostable
         playerRigidbody.linearVelocity = new Vector3(playerRigidbody.linearVelocity.x, 0,playerRigidbody.linearVelocity.z);
         playerRigidbody.AddForce(transform.forward * _jumpForce, ForceMode.Impulse);
         _isActivated = true;
-        Invoke(nameof(ResetActivation), 0.2f);  
+        Invoke(nameof(ResetActivation), 0.2f);
+        AudioManager.Instance.Play(SoundType.SpatulaSound);
     }
 
     private void PlayBoostAnimation()
