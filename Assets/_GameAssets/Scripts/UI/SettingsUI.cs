@@ -1,5 +1,6 @@
 using DG.Tweening;
 using MaskTransitions;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,10 +17,20 @@ public class SettingsUI : MonoBehaviour
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Button _mainMenuButton;
 
+    [Header("Sprites")]
+    [SerializeField] private Sprite _soundActiveSptire;
+    [SerializeField] private Sprite _soundPassiveSptire;
+    [SerializeField] private Sprite _MusicActiveSptire;
+    [SerializeField] private Sprite _MusicPassiveSptire;
+
+
     [Header("Settings")]
     [SerializeField] private float _animationDuration;
 
     private Image _blackBackgroundImage;
+
+    private bool _isMusicActive;
+    private bool _isSoundActive;
 
     private void Awake()
     {
@@ -33,6 +44,27 @@ public class SettingsUI : MonoBehaviour
             AudioManager.Instance.Play(SoundType.TransitionSound);
             TransitionManager.Instance.LoadLevel(Consts.SceneNames.MENU_SCENE);
         });
+
+        _musicButton.onClick.AddListener(OnMusicClickek);
+        _soundButton.onClick.AddListener(OnSoundClickek);
+    }
+
+    private void OnSoundClickek()
+    {
+        AudioManager.Instance.Play(SoundType.ButtonClickSound);
+        _isSoundActive = !_isSoundActive;
+        _soundButton.image.sprite = _isSoundActive ? _soundActiveSptire : _soundPassiveSptire; //isSound true ise active false ise passive olacak // Ternary Operator
+        AudioManager.Instance.SetSoundEffectsMute(!_isSoundActive);
+
+    }
+
+    private void OnMusicClickek()
+    {
+        AudioManager.Instance.Play(SoundType.ButtonClickSound);
+        _isMusicActive = !_isMusicActive;
+        _musicButton.image.sprite = _isMusicActive ? _MusicActiveSptire : _MusicPassiveSptire;
+        BackgroundMusic.Instance.SetMusicMute(!_isMusicActive);
+
     }
 
     private void OnSettingsButtonClicked()
@@ -41,7 +73,7 @@ public class SettingsUI : MonoBehaviour
         AudioManager.Instance.Play(SoundType.ButtonClickSound);
         _blackBackgroundObject.SetActive(true);
         _settingPopupObject.SetActive(true);
-    
+
         _blackBackgroundImage.DOFade(0.8f, _animationDuration).SetEase(Ease.Linear);
         _settingPopupObject.transform.DOScale(1.5f, _animationDuration).SetEase(Ease.OutBack);
     }
